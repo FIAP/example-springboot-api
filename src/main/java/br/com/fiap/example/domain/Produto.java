@@ -3,9 +3,12 @@ package br.com.fiap.example.domain;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -32,6 +35,10 @@ public class Produto {
 	@Past
 	private LocalDate dataFabricacao;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="codigo", nullable = false, insertable = false, updatable = false)
+	private Categoria categoria;
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -70,6 +77,14 @@ public class Produto {
 
 	public void setDataFabricacao(LocalDate dataFabricacao) {
 		this.dataFabricacao = dataFabricacao;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	
