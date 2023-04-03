@@ -4,16 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@SequenceGenerator(name = "categoria", sequenceName = "SQ_CATEGORIA", allocationSize = 1)
 public class Categoria {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 
 	@NotBlank(message = "Nome obrigatório!")
